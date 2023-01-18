@@ -79,8 +79,8 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-                mmotor0.setPower(0.8);
-                mmotor1.setPower(0.8);
+                mmotor0.setPower(0.97);
+                mmotor1.setPower(0.97);
 
                 while (opModeIsActive() && mmotor0.isBusy())   //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
                 {
@@ -111,8 +111,8 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-                mmotor0.setPower(-0.8);
-                mmotor1.setPower(-0.8);
+                mmotor0.setPower(-0.97);
+                mmotor1.setPower(-0.97);
 
                 while (opModeIsActive() && mmotor0.isBusy())   //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
                 {
