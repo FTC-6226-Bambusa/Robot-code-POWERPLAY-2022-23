@@ -88,7 +88,7 @@ public class auto extends LinearOpMode {
                  */
             }
         });
-
+        int H = 2100;//ARM HEIGHT
 
         waitForStart();
 
@@ -171,8 +171,8 @@ public class auto extends LinearOpMode {
                 motorFrontRight.setPower(0.0);
 
                 //fully extend arm
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -363,8 +363,8 @@ public class auto extends LinearOpMode {
                 motorBackRight.setTargetPosition(720);
                 motorFrontLeft.setTargetPosition(-720);
                 motorFrontRight.setTargetPosition(720);
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -584,8 +584,8 @@ public class auto extends LinearOpMode {
                 motorBackRight.setTargetPosition(740);
                 motorFrontLeft.setTargetPosition(-740);
                 motorFrontRight.setTargetPosition(740);
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -927,8 +927,8 @@ public class auto extends LinearOpMode {
                 motorFrontRight.setPower(0.0);
 
                 //fully extend arm
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -1119,8 +1119,8 @@ public class auto extends LinearOpMode {
                 motorBackRight.setTargetPosition(720);
                 motorFrontLeft.setTargetPosition(-720);
                 motorFrontRight.setTargetPosition(720);
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -1340,8 +1340,8 @@ public class auto extends LinearOpMode {
                 motorBackRight.setTargetPosition(740);
                 motorFrontLeft.setTargetPosition(-740);
                 motorFrontRight.setTargetPosition(740);
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -1689,8 +1689,8 @@ public class auto extends LinearOpMode {
                 motorFrontRight.setPower(0.0);
 
                 //fully extend arm
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -1881,8 +1881,8 @@ public class auto extends LinearOpMode {
                     motorBackRight.setTargetPosition(720);
                     motorFrontLeft.setTargetPosition(-720);
                     motorFrontRight.setTargetPosition(720);
-                    mmotor0.setTargetPosition(-2050);
-                    mmotor1.setTargetPosition(-2050);
+                    mmotor0.setTargetPosition(-H);
+                    mmotor1.setTargetPosition(-H);
 
                     mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -2102,8 +2102,8 @@ public class auto extends LinearOpMode {
                 motorBackRight.setTargetPosition(750);
                 motorFrontLeft.setTargetPosition(-750);
                 motorFrontRight.setTargetPosition(750);
-                mmotor0.setTargetPosition(-2050);
-                mmotor1.setTargetPosition(-2050);
+                mmotor0.setTargetPosition(-H);
+                mmotor1.setTargetPosition(-H);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);

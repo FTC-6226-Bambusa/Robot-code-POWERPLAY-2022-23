@@ -38,6 +38,13 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
         mmotor0.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         mmotor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+        mmotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        mmotor0.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
 
         waitForStart();
 
@@ -66,9 +73,16 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
             double frontRightPower = (rotY - rotX - rx) / denominator;
             double backRightPower = (rotY + rotX - rx) / denominator;
 
-            mmotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mmotor0.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+
+            //low & slow mode
+            if (gamepad1.left_trigger > 0.2){
+                e = 0.6;
+            }
+            //book it mode!
+            if (gamepad1.right_trigger > 0.2){
+                e = 2;
+            }
 
 
             if (gamepad2.y){
@@ -87,7 +101,10 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
                     telemetry.addData("encoder-fwd-left", mmotor0.getCurrentPosition() + "  busy=" + mmotor0.isBusy());
                     telemetry.addData("encoder-fwd-right", mmotor1.getCurrentPosition() + "  busy=" + mmotor1.isBusy());
                     telemetry.update();
-                    idle();
+                    motorFrontLeft.setPower(e*0.5*frontLeftPower);
+                    motorBackLeft.setPower(e*0.5*backLeftPower);
+                    motorFrontRight.setPower(e*0.5*frontRightPower);
+                    motorBackRight.setPower(e*0.5*backRightPower);
                 }
 
                 // set motor power to zero to turn off motors. The motors stop on their own but
@@ -119,7 +136,10 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
                     telemetry.addData("encoder-fwd-left", mmotor0.getCurrentPosition() + "  busy=" + mmotor0.isBusy());
                     telemetry.addData("encoder-fwd-right", mmotor1.getCurrentPosition() + "  busy=" + mmotor1.isBusy());
                     telemetry.update();
-                    idle();
+                    motorFrontLeft.setPower(e*0.5*frontLeftPower);
+                    motorBackLeft.setPower(e*0.5*backLeftPower);
+                    motorFrontRight.setPower(e*0.5*frontRightPower);
+                    motorBackRight.setPower(e*0.5*backRightPower);
                 }
 
                 // set motor power to zero to turn off motors. The motors stop on their own but
@@ -138,14 +158,7 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
 
             //speed changing time
 
-            //low & slow mode
-            if (gamepad1.left_trigger > 0.2){
-               e = 0.6;
-            }
-            //book it mode!
-            if (gamepad1.right_trigger > 0.2){
-                e = 2;
-            }
+
             motorFrontLeft.setPower(e*0.5*frontLeftPower);
             motorBackLeft.setPower(e*0.5*backLeftPower);
             motorFrontRight.setPower(e*0.5*frontRightPower);
