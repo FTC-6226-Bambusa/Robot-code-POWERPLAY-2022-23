@@ -101,10 +101,8 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
                     telemetry.addData("encoder-fwd-left", mmotor0.getCurrentPosition() + "  busy=" + mmotor0.isBusy());
                     telemetry.addData("encoder-fwd-right", mmotor1.getCurrentPosition() + "  busy=" + mmotor1.isBusy());
                     telemetry.update();
-                    motorFrontLeft.setPower(e*0.5*frontLeftPower);
-                    motorBackLeft.setPower(e*0.5*backLeftPower);
-                    motorFrontRight.setPower(e*0.5*frontRightPower);
-                    motorBackRight.setPower(e*0.5*backRightPower);
+                    idle();
+
                 }
 
                 // set motor power to zero to turn off motors. The motors stop on their own but
@@ -112,6 +110,7 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
 
                 mmotor0.setPower(0.0);
                 mmotor1.setPower(0.0);
+
 
             }
 
@@ -136,10 +135,7 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
                     telemetry.addData("encoder-fwd-left", mmotor0.getCurrentPosition() + "  busy=" + mmotor0.isBusy());
                     telemetry.addData("encoder-fwd-right", mmotor1.getCurrentPosition() + "  busy=" + mmotor1.isBusy());
                     telemetry.update();
-                    motorFrontLeft.setPower(e*0.5*frontLeftPower);
-                    motorBackLeft.setPower(e*0.5*backLeftPower);
-                    motorFrontRight.setPower(e*0.5*frontRightPower);
-                    motorBackRight.setPower(e*0.5*backRightPower);
+                    idle();
                 }
 
                 // set motor power to zero to turn off motors. The motors stop on their own but
