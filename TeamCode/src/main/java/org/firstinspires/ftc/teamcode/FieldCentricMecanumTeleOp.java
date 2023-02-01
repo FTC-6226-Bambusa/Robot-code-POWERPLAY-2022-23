@@ -162,8 +162,8 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
             //manual control of the lift via the gamepad//
             mmotor0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             mmotor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-           mmotor0.setPower(0.3*gamepad2.left_stick_y);
-           mmotor1.setPower(0.3*gamepad2.left_stick_y);
+            mmotor0.setPower(0.3*gamepad2.left_stick_y);
+            mmotor1.setPower(0.3*gamepad2.left_stick_y);
         }
     }
 }
