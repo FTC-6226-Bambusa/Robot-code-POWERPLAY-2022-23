@@ -96,7 +96,7 @@ public class auto extends LinearOpMode {
 
         switch (detector.getPosition()) {
             case LEFT:
-                // 1+5 auto begins
+                // 1+2 auto begins
 
                 // 1) grip claw
                 servo.setPower(0.3);

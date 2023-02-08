@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
 public class FieldCentricMecanumTeleOp extends LinearOpMode {
@@ -20,6 +21,8 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
         DcMotor mmotor0 = hardwareMap.dcMotor.get("mmotor0");
         DcMotor mmotor1 = hardwareMap.dcMotor.get("mmotor1");
         CRServo servo = hardwareMap.crservo.get("intake");
+
+        ElapsedTime h = new ElapsedTime();
 
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -84,86 +87,56 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
                 e = 2;
             }
 
-
+            //THIS MOVES IT UP
             if (gamepad2.y){
-                mmotor0.setTargetPosition(-2100);
-                mmotor1.setTargetPosition(-2100);
+                mmotor0.setTargetPosition(-2200);
+                mmotor1.setTargetPosition(-2200);
 
                 mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
+                mmotor0.setPower(0.97);
+                mmotor1.setPower(0.97);
+            }
+            else if (gamepad2.a)/*THIS MOVES IT BACK DOWN*/ {
+                mmotor0.setTargetPosition(0);
+                mmotor1.setTargetPosition(0);
+                servo.setPower(-0.2);
+                sleep(200);
+                servo.setPower(0);
+
+                mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
                 mmotor0.setPower(0.97);
                 mmotor1.setPower(0.97);
 
-                while (opModeIsActive() && mmotor0.isBusy())   //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
-                {
-                    telemetry.addData("encoder-fwd-left", mmotor0.getCurrentPosition() + "  busy=" + mmotor0.isBusy());
-                    telemetry.addData("encoder-fwd-right", mmotor1.getCurrentPosition() + "  busy=" + mmotor1.isBusy());
-                    telemetry.update();
-                    idle();
+            }
+            else if (mmotor0.isBusy()) {
+                telemetry.addData("encoder-fwd-left", mmotor0.getCurrentPosition() + "  busy=" + mmotor0.isBusy());
+                telemetry.addData("encoder-fwd-right", mmotor1.getCurrentPosition() + "  busy=" + mmotor1.isBusy());
+                telemetry.update();
+            }
 
-                }
+            else {
 
-                // set motor power to zero to turn off motors. The motors stop on their own but
-                // power is still applied so we turn off the power.
-
-                mmotor0.setPower(0.0);
-                mmotor1.setPower(0.0);
-
-
+                //manual control of the lift via the gamepad//
+                mmotor0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                mmotor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                mmotor0.setPower(0.3*gamepad2.left_stick_y);
+                mmotor1.setPower(0.3*gamepad2.left_stick_y);
             }
 
 
-            if (gamepad2.a){
-
-                servo.setPower(-0.3);
-                sleep(250);
-                servo.setPower(0);
-
-                mmotor0.setTargetPosition(0);
-                mmotor1.setTargetPosition(0);
-
-                mmotor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                mmotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                mmotor0.setPower(-0.97);
-                mmotor1.setPower(-0.97);
-
-                while (opModeIsActive() && mmotor0.isBusy())   //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
-                {
-                    telemetry.addData("encoder-fwd-left", mmotor0.getCurrentPosition() + "  busy=" + mmotor0.isBusy());
-                    telemetry.addData("encoder-fwd-right", mmotor1.getCurrentPosition() + "  busy=" + mmotor1.isBusy());
-                    telemetry.update();
-                    idle();
-                }
-
-                // set motor power to zero to turn off motors. The motors stop on their own but
-                // power is still applied so we turn off the power.
-
-                mmotor0.setPower(0.0);
-                mmotor1.setPower(0.0);
-
-
-
-
-            }
             if (gamepad2.x){
                 servo.setPower(0.2);
             }
 
-            //speed changing time
-
-
+            //speed changing time and motor power setting
             motorFrontLeft.setPower(e*0.5*frontLeftPower);
             motorBackLeft.setPower(e*0.5*backLeftPower);
             motorFrontRight.setPower(e*0.5*frontRightPower);
             motorBackRight.setPower(e*0.5*backRightPower);
-            //manual control of the lift via the gamepad//
-            mmotor0.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            mmotor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            mmotor0.setPower(0.3*gamepad2.left_stick_y);
-            mmotor1.setPower(0.3*gamepad2.left_stick_y);
         }
     }
 }
